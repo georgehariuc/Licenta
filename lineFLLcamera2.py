@@ -6,9 +6,9 @@ from AlphaBot2 import AlphaBot2   # daca modulul tau se numeste altfel (ex: init
 
 # ---------------- Parametri ----------------
 comanda_maxima = 20   # viteza de baza (0-100)
-Kp = 8                # eroarea e in pixeli (+-80), deci castigurile sunt mici
-Kd = 100
-steer = 1             # pune -1 daca robotul vireaza DEPARTE de linie
+Kp = 1.7               # eroarea e in pixeli (+-80), deci castigurile sunt mici
+Kd = 3
+steer = -1             # pune -1 daca robotul vireaza DEPARTE de linie
 prag = 100            # prag de binarizare (linie inchisa la culoare)
 roi_top = 60          # se foloseste doar partea de jos a imaginii (randurile 60-120)
 min_area = 30         # contururi mai mici decat atat sunt considerate zgomot
@@ -77,7 +77,7 @@ def drive(eroare, eroare_ant):
     # in biblioteca: A = roata dreapta, B = roata stanga
     # eroare > 0 = linia e in dreapta -> incetinim roata dreapta (A)
     if regulator < 0:
-        Ab.setPWMA(comanda_maxima)
+        Ab.setPWMA(comanda_maxima )
         Ab.setPWMB(comanda_maxima + regulator)
     else:
         Ab.setPWMA(comanda_maxima - regulator)
