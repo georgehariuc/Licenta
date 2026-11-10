@@ -5,7 +5,7 @@ from picamera2 import Picamera2
 from AlphaBot2 import AlphaBot2   # daca modulul tau se numeste altfel (ex: initializare), schimba aici
 
 # ---------------- Parametri ----------------
-comanda_maxima = 17   # viteza de baza pe drum drept (0-100)  [era 20]
+comanda_maxima = 25   # viteza de baza pe drum drept (0-100)  [era 20]
 Kp = 0.25             # [era 0.2] - corectie mai puternica in viraje
 k_curba = 0.6         # cat din "curba" (banda departe - banda aproape) se adauga la eroare; coboara spre 0.3 daca vireaza prea brusc pe drum drept
 Kd = 0.45             # [era 0.4] - Kd mare reactioneaza la zgomotul centroidului
@@ -31,7 +31,7 @@ contrast_min = 40     # diferenta minima intre pixelul cel mai inchis si cel mai
 min_area = 30         # contururi mai mici decat atat sunt zgomot
 
 debug = False         # True = afiseaza valorile de gri si numarul de pixeli de linie
-show = False          # False daca rulezi fara ecran (SSH)
+show = True          # False daca rulezi fara ecran (SSH)
 
 Ab = AlphaBot2()
 
@@ -115,6 +115,8 @@ def main():
     eroare_ant = None   # None = nu avem eroare anterioara (evita saltul derivativei)
     ultima_dir = 0      # + = linia a fost ultima data in dreapta, - = in stanga
     cautand = False
+    Ab.setPWMA(0)
+    Ab.setPWMB(0)
     Ab.forward()   # directia de mers trebuie setata, setPWM schimba doar viteza
 
     try:
