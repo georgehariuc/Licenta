@@ -6,8 +6,8 @@ from AlphaBot2 import AlphaBot2   # daca modulul tau se numeste altfel (ex: init
 
 # ---------------- Parametri ----------------
 comanda_maxima = 20   # viteza de baza pe drum drept (0-100)
-Kp = 0.4
-Kd = 0.8
+Kp = 0.15
+Kd = 0.3
 steer = -1             # pune -1 daca robotul vireaza DEPARTE de linie
 
 # Incetinire in viraje
@@ -23,7 +23,7 @@ prag = 100            # folosit doar daca use_otsu = False
 contrast_min = 40     # diferenta minima intre pixelul cel mai inchis si cel mai deschis
 min_area = 30         # contururi mai mici decat atat sunt zgomot
 
-viteza_cautare = 20   # viteza de rotatie cand linia e pierduta
+viteza_cautare = 10   # viteza de rotatie cand linia e pierduta
 debug = False         # True = afiseaza valorile de gri si numarul de pixeli de linie
 show = False           # False daca rulezi fara ecran (SSH)
 
@@ -110,7 +110,7 @@ def main():
     ultima_eroare = 0
     cautand = False
     Ab.forward()   # directia de mers trebuie setata, setPWM schimba doar viteza
-
+	
     try:
         while True:
 			

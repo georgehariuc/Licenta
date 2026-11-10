@@ -5,7 +5,7 @@ from TRSensors import TRSensor
 
 comanda_maxima = 30
 thresh = 300        # sensor <= thresh  ->  line detected (1)
-Kp = 8          # start low, then tune
+Kp =           # start low, then tune
 Kd = 100
 eroare_ant = 0
 
@@ -46,10 +46,10 @@ def turn(direction, timeout=3):
             break
         if direction == "left":
             Ab.setPWMA(0)
-            Ab.setPWMB(20)
+            Ab.setPWMB(15)
             print("left!!")
         else:
-            Ab.setPWMA(20)
+            Ab.setPWMA(15)
             Ab.setPWMB(0)
             print("right!!")
 
